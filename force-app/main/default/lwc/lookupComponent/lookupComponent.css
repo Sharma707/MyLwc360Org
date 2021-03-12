@@ -1,0 +1,11 @@
+.container .slds-input{
+    padding-left: 0rem !important;
+    border: unset !important;
+}
+.container .slds-input:hover,.container .slds-input:active, .container .slds-input:focus{
+    border:none !important;
+    box-shadow: unset !important;
+}
+.container .slds-form-element__help{
+    display: none !important;;
+}

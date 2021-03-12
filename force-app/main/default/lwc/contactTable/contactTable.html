@@ -1,0 +1,13 @@
+<template>
+  <template if:true={tableShow}>
+    <div style="height: 18rem;">
+      <template if:true={contactFound}>
+        <lightning-datatable key-field="id" data={contactList} columns={columns} onrowaction={handleRowAction}>
+        </lightning-datatable>
+      </template>
+      <template if:false={contactFound}>
+        No Record Found
+      </template>
+    </div>
+  </template>
+</template>

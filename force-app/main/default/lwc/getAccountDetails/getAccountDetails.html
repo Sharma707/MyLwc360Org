@@ -1,0 +1,67 @@
+<template>
+    <lightning-card variant="Brand" title="Accounts" icon-name="standard:account">
+        <lightning-button  variant="brand" alternative-text="Show More" slot="actions" label="New Account" title="New Account" onclick={handleNewClick}
+            class="slds-m-left_x-small"></lightning-button>
+        <div class="slds-p-horizontal_small" style="height: 18rem;">
+            <lightning-datatable 
+            key-field="Id"
+            data={data}
+            columns={columns} 
+            enable-infinite-loading
+            onloadmore={loadMoreData}
+            hide-checkbox-column="true"
+            show-row-number-column="true">
+            </lightning-datatable>
+        </div>
+    </lightning-card>
+
+
+
+
+    <template if:true={isModalOpen}>
+        <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true"
+            aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+            <div class="slds-modal__container">
+                <header class="slds-modal__header">
+                    <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse"
+                        title="Close" onclick={closeModal}>
+                        <lightning-icon icon-name="utility:close" alternative-text="close" variant="inverse"
+                            size="small"></lightning-icon>
+                        <span class="slds-assistive-text">Close</span>
+                    </button>
+                    <h2 id="modal-heading-01" class="slds-text-heading_medium slds-hyphenate">Create New Account</h2>
+                </header>
+                <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
+                    <!--<lightning-record-edit-form  object-api-name="Account" onsuccess={successHandel}>
+                        <lightning-messages> </lightning-messages>
+                        <lightning-input-field field-name="Name"> </lightning-input-field>
+                        <lightning-input-field field-name="AccountNumber"> </lightning-input-field>
+                        <lightning-input-field field-name="Phone"> </lightning-input-field>
+                        <lightning-input-field field-name="Website"> </lightning-input-field>
+                        <lightning-button class="slds-m-top_small" variant="brand" type="submit"  label="Save"> </lightning-button>
+                    </lightning-record-edit-form> -->
+                    <lightning-layout multiple-rows>
+                        <lightning-layout-item size="12"  small-device-size="12" medium-device-size="12" large-device-size="12" >
+                           <lightning-input type="text" required=true variant="standard" name="Name" label="Name" data-fieldapi="Name" placeholder="type here..." onchange={inputHandler}></lightning-input>
+                        </lightning-layout-item>
+                        <lightning-layout-item size="12"  small-device-size="12" medium-device-size="12" large-device-size="12" >
+                            <lightning-input type="text"  required=true variant="standard" name="AccountNumber" data-fieldapi="AccountNumber" label="Account Number" placeholder="type here..." onchange={inputHandler}></lightning-input>
+                         </lightning-layout-item>
+                         <lightning-layout-item size="12"  small-device-size="12" medium-device-size="12" large-device-size="12" >
+                            <lightning-input type="phone"  required=true variant="standard" name="Phone" label="Phone" data-fieldapi="Phone" placeholder="type here..." onchange={inputHandler}></lightning-input>
+                         </lightning-layout-item>
+                         
+                    </lightning-layout>
+                </div>
+                <footer class="slds-modal__footer">
+                    <lightning-button label="Cancel" title="Cancel" class="slds-m-right_small" onclick={closeModal}></lightning-button>
+                    <lightning-button variant="brand" label="Save" title="Save" onclick={saveModal}></lightning-button>
+                </footer>
+            </div>
+        </section>
+        <div class="slds-backdrop slds-backdrop_open"></div>
+    </template>
+    
+
+
+</template>
