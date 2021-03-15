@@ -1,0 +1,16 @@
+<template>
+    <lightning-card variant="Brand" title="All Contact" icon-name="standard:contact">
+        <lightning-button variant="border-filled" label="New Contact" slot="actions"
+                onclick={newContactRecord}></lightning-button>
+            <lightning-button variant="border-filled"  label="Show/Hide" slot="actions"
+                onclick={showHideHandler}></lightning-button>
+        <div class="bgColor">
+            <c-contact-table contact-list={contactList} columns={columns} onviewcontact={viewcontactHandler}>
+            </c-contact-table>
+            <hr />
+            <c-lookup-component logo-name="standard:contact" label="Contact Lookup" default-data required
+                object-api-name="Contact" search-field="FirstName" limit=7 record-id="0035g000003bshFAAQ"
+                ongetlookupid={getlookupidEvent}></c-lookup-component> 
+        </div>
+    </lightning-card>
+</template>
